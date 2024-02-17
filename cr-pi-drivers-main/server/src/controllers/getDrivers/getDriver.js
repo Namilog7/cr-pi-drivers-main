@@ -1,18 +1,14 @@
 const axios = require("axios")
-const URL_BASE = require("../../../endpoints")
+const {URL_BASE} = require("../../../endpoints")
 const {Driver} = require("../../db")
 
 const getDriver = async (idDriver) => {
-    const {data} = await axios(`${URL_BASE}/${idDriver}`)
-    if(!data){
-        const dbdriver = await Driver.findOne({
-            where:{
-                id:idDriver
-            }
-        })
+    if(idDriver.length == 36){
+        const dbdriver = await Driver.findByPk(idDriver);
         return dbdriver
     }
-    return data
+        const {data} = await axios(`${URL_BASE}/${idDriver}`)
+        return data
 }
 
 module.exports = getDriver

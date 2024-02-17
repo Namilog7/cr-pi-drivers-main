@@ -1,11 +1,10 @@
 const axios = require("axios");
-const {Driver} = require("../../db")
+const {URL_BASE} = require("../../../endpoints")
 
-
-const getAllDrivers = async (URL_BASE) => {
+const getAllDrivers = async () => {
     const {data} = await axios(URL_BASE);
     const drivers = data.map(driver=>{
-        const {id,name,nationality,image,dob,description} = driver;
+        const {id,name,nationality,image,dob,description,teams} = driver;
         if(!image.url) image.url = "hola aca deberia ir una imagen";
         return  {
             id,
@@ -14,6 +13,7 @@ const getAllDrivers = async (URL_BASE) => {
             description,
             dob,
             nationality,
+            teams,
             image: image.url
         }
     })
