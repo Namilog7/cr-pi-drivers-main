@@ -1,6 +1,6 @@
 .home{
-    width: 100vw;
-    height: 100vw;
+    width: 100%;
+    height: 46vw;
 }
 .contSearch{
     background-color: rgb(255, 0, 0);
@@ -8,7 +8,14 @@
     height: 55px;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    width: 100%;
 }
 .filters{
     margin-left: 2%;
+}
+.cards{
+    width: 100vw;
+    background-color: aqua;
+    padding-top: 4%;
 }
