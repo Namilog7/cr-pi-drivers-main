@@ -6,13 +6,18 @@ import { GET_BY_ORIGIN } from "./actions/filByOrigin";
 
 const initialState = {
     driversHome : [],
-    driverDetail : {}
+    driverDetail : {},
+    aux: []
 };
 
 const reducer = (state=initialState, {type,payload}) => {
     switch(type){
         case GET_DRIVERS:{
-            return {...state, driversHome:[...state.driversHome,...payload]} 
+            return {
+                ...state,
+                driversHome:[...state.driversHome,...payload],
+                aux:[...state.driversHome, ...payload]
+            } 
         }
         case SEARCH_DRIVER:{
             return {
@@ -33,6 +38,7 @@ const reducer = (state=initialState, {type,payload}) => {
             }
         }
         case GET_BY_ORIGIN:{
+
             return{
                 ...state,
                 driversHome:[...payload]

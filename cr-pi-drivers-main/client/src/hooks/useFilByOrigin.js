@@ -1,22 +1,24 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { filByOrigin } from "../redux/actions/filByOrigin";
 
 
 const useFilByOrigin = () =>{
-    const driversHome = useSelector(state => state.driversHome)
+    const dispatch = useDispatch()
+    const aux = useSelector(state => state.aux)
     const filByOr = (value) => {
         if(value == "api"){
-            const origin = driversHome.filter(driver => {
-             return driver.id.length == 36
+            const filt = aux.filter(driver=>{
+               return driver.id.length !== 36
             })
-            return origin
+            dispatch(filByOrigin(filt))
         }else{
-            const origin = driversHome.filter(driver=>{
-             return driver.id.length !== 36
-            })
-            return origin
+            const filt = aux.filter(driver=>{
+                return driver.id.length == 36
+            });
+            dispatch(filByOrigin(filt))
         }
     }
-    return{
+    return {
         filByOr
     }
 };
