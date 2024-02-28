@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const getAllDrivers = require("../controllers/getDrivers/getAllDrivers");
+const {getAllDrivers} = require("../controllers/getDrivers/getAllDrivers");
 const getDriver = require("../controllers/getDrivers/getDriver")
 const getDriverQuery = require("../controllers/getDrivers/getDriverQuery")
 const postDriver = require("../controllers/postDriver/postDriver")
@@ -12,6 +12,7 @@ router.get("/", async (req,res)=>{
     const {name} = req.query;
     try {
         const driver = name ? await getDriverQuery(name) : await getAllDrivers();
+        console.log("peticion")
         res.status(200).json(driver)
     } catch (error) {
         res.status(400).json({error:error.message})

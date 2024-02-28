@@ -5,3 +5,12 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+.buttons{
+    width: 80%;
+    height: 100%;
+}
+.button{
+    width: 2%;
+    height: 2%;
+}

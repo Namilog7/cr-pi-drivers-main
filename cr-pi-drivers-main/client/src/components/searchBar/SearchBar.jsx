@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import useSearch from "../../hooks/useSearch"
 import style from "./SearchBar.module.css"
 const SearchBar = () => {
@@ -12,7 +13,12 @@ const SearchBar = () => {
 
     return(
         <>
-        <div className={style.search}> 
+        <div className={style.search}>
+            <div>
+                <Link to="/formPage">
+                <button className={style.button}>Create new!</button>
+                </Link>
+            </div> 
             <input type="text" className={style.input} value={input} onChange={handleChange} />
             <button className={style.searchbutton} onClick={handleClick}>Search</button>
         </div>

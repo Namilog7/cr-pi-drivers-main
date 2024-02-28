@@ -1,5 +1,5 @@
 
-export const handleChange = (event,cb) =>{
+export const handle = (event,cb) =>{
     const value = event.target.value;
     cb(value)
 }

@@ -1,7 +1,8 @@
 import Landing from './views/landing/Landing';
 import {Route, Routes} from "react-router-dom";
 import Home from './views/home/Home';
-import Detail from "./views/detail/Detail"
+import Detail from "./views/detail/Detail";
+import FormPage from "./views/formPage/FormPage"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Home />} />
         <Route path='/detailPage' element={<Detail/>} />
+        <Route path='/formPage' element={<FormPage/>} />
       </Routes>
     </div>
   )

@@ -1,13 +1,12 @@
 import { GET_DRIVERS } from "./actions/getDrivers";
 import { SEARCH_DRIVER } from "./actions/searchDriver";
-import { CLEAN } from "./actions/Clean";
 import { GET_DETAIL } from "./actions/getDetail";
 import { GET_BY_FILTER } from "./actions/filByOrigin";
 
 const initialState = {
     driversHome : [],
     driverDetail : {},
-    aux: []
+    aux: [],
 };
 
 const reducer = (state=initialState, {type,payload}) => {
@@ -21,12 +20,6 @@ const reducer = (state=initialState, {type,payload}) => {
         }
         case SEARCH_DRIVER:{
             return {
-                ...state,
-                driversHome:[...payload]
-            }
-        }
-        case CLEAN :{
-            return{
                 ...state,
                 driversHome:[...payload]
             }

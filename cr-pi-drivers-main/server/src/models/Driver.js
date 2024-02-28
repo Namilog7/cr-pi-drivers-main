@@ -21,17 +21,17 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    image:{
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     dob:{
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     nationality:{
       type: DataTypes.STRING,
       allowNull: false
+    },
+    image:{
+      type: DataTypes.STRING,
+      allowNull:false
     }
   },{
     timestamps: false
