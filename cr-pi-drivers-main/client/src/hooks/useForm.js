@@ -29,6 +29,7 @@ const useForm = () => {
             ...form,
             [property] : value
         })
+        validates({...form,[property]:value},errors,setErrors,property)
     }
 
     return {
