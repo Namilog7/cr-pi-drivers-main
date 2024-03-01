@@ -1,5 +1,6 @@
 
 const validates = (form,errors,setErrors,property) => {
+
     switch(property){
         case "name":{
             if(!form.name) setErrors({...errors,name:"Enter Name!"});
@@ -17,8 +18,27 @@ const validates = (form,errors,setErrors,property) => {
            }
         };
         break;
+        case "teams" :{
+            if(!form.teams) setErrors({...errors, teams:"Enter Teams!"})
+            else{
+                setErrors({...errors,teams:""})
+           }
+        };
+        break;
+        case "dob":{
+            if(!form.dob) setErrors({...errors, dob: "Enter valid date!"})
+            else setErrors({...errors,dob:""})
+        }
+        break;
+        case "nationality" :{
+            if(!form.nationality) setErrors({...errors, nationality:"Enter nationality!"})
+            else setErrors({...errors,nationality:""})
+        }
+
 
     }
-}
+};
+
+
 
 export default validates

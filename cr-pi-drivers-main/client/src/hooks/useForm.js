@@ -2,14 +2,15 @@ import { useState } from "react"
 import validates from "./validates";
 
 const useForm = () => {
+
     const [form, setForm] = useState({
         name: "",
         lastName: "",
         nationality: "",
-        dob: "",
-        teams: "",
+        dob: false,
+        teams: false,
         description: "",
-        image: "",
+        image: false,
     });
 
     const [errors, setErrors] = useState({
@@ -30,6 +31,19 @@ const useForm = () => {
             [property] : value
         })
         validates({...form,[property]:value},errors,setErrors,property)
+    };
+    
+    const handleForm2 = (event) => {
+        const property = event.target.name;
+        if(!form[property]){
+            setForm({
+                ...form,
+                [property] : true
+            })
+        }else setForm({
+            ...form,
+            [property] :false
+        })
     }
 
     return {
@@ -37,7 +51,8 @@ const useForm = () => {
         setForm,
         handleForm,
         errors,
-        setErrors
+        setErrors,
+        handleForm2
     }
 
 
