@@ -7,10 +7,10 @@ const useForm = () => {
         name: "",
         lastName: "",
         nationality: "",
-        dob: false,
-        teams: false,
+        dob: "",
+        teams: [],
         description: "",
-        image: false,
+        image: "",
     });
 
     const [errors, setErrors] = useState({
@@ -33,18 +33,6 @@ const useForm = () => {
         validates({...form,[property]:value},errors,setErrors,property)
     };
     
-    const handleForm2 = (event) => {
-        const property = event.target.name;
-        if(!form[property]){
-            setForm({
-                ...form,
-                [property] : true
-            })
-        }else setForm({
-            ...form,
-            [property] :false
-        })
-    }
 
     return {
         form,
@@ -52,7 +40,6 @@ const useForm = () => {
         handleForm,
         errors,
         setErrors,
-        handleForm2
     }
 
 

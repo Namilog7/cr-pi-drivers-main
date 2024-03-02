@@ -2,8 +2,7 @@ const {Driver} = require("../../db");
 
 const postDriver = async (driver) => {
     const { name, lastName, description, dob, nationality, image, teams } = driver
-    if(!name||!lastName||!description||!dob||!nationality) throw Error("Faltan datos")
-    const mayus = {name,lastName,nationality};
+    if(!name||!lastName||!description||!nationality) throw Error("Faltan datos")
 
     for(key in driver){
         if(driver[key] == name || driver[key] == lastName || driver[key] == nationality){

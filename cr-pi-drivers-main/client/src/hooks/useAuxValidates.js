@@ -1,10 +1,15 @@
-import { useState } from "react"
+import { useState } from "react";
+import useTeams from "./useTeams";
 import useForm from "./useForm";
 
 const useAuxValidates = () => {
 
-    const {form,setForm} = useForm()
+    const {selectTeam} = useTeams()
     const [arrTeams, setArrTeams] = useState([]);
+    const [find, setFind] = useState([])
+
+
+    selectTeam()
 
     const teamsSelecteds = (value) =>{
         if(!arrTeams.includes(value)){
@@ -12,9 +17,22 @@ const useAuxValidates = () => {
         }
     };
 
+    const searchIdTeam = (array,teamsIds) => {
+        while(array.length){
+            let id = array.shift();
+            const match = teamsIds.find(ti=> ti.name == id);
+            setFind([...find,match.id])
+            console.log(typeof find)
+        }
+    }
+    
+
+
     return{
         teamsSelecteds,
-        arrTeams
+        arrTeams,
+        searchIdTeam,
+        find
     }
 };
 

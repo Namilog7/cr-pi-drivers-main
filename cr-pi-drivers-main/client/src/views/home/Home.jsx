@@ -28,7 +28,8 @@ const Home =  () => {
                 <select name="filter" id="filter" onChange={()=>handle(event,filterTeam)}>
                     <option value="" disabled selected >Selected Team</option>
                     {teams.map(team=>{
-                        return <option key={team} value={team} id={team}>{team}</option>
+                        const {name} = team
+                        return <option key={name} value={name} id={name}>{name}</option>
                     })}
                 </select>
                 <select name="filter2" id="filter2" onChange={()=>handle(event,filByOr)}>
