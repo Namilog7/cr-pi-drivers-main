@@ -5,9 +5,10 @@ const { Driver,Teams } = require("../../db");
 const filterApiProps = (data) => {
     const drivers = data.map(driver=>{
         const {id,name,nationality,image,dob,description,teams} = driver;
+        
         const teamsArray = teams?.split(",")
         const teamsArr = teamsArray?.map(team=>team.trim())
-        if(!image.url) image.url = "hola aca deberia ir una imagen";
+        if(!image.url) image.url = "https://www.infobae.com/new-resizer/S8hu9c8bXRGG3ZZU_XLIU8x3DyA=/992x850/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/PM7KTLYEXNBZRJV6K3BPM2A62Q.jpg";
         return  {
             id,
             name:name.forename,
@@ -30,6 +31,7 @@ const getAllDrivers = async () => {
     const dbdrivers = await Driver.findAll({
         include:{
             model: Teams,
+            as: "teams",
             attributes:["name"],
             through:{
                 attributes:[]
@@ -37,7 +39,14 @@ const getAllDrivers = async () => {
         }
     });
 
-    return [...dbdrivers, ...drivers]
+    const jsonDrivers = dbdrivers.map(driver=>{
+        return {
+            ...driver.toJSON(),
+            teams : driver.teams.map(t=>t.name)
+        }
+    })
+
+    return [...jsonDrivers, ...drivers]
 }
 
 

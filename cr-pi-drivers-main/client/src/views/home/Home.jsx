@@ -2,22 +2,24 @@ import SearchBar from "../../components/searchBar/SearchBar";
 import style from "./Home.module.css"
 import Cards from "../../components/cards/Cards";
 import useFilByOrigin from "../../hooks/useFilByOrigin";
-import useTeams from "../../hooks/useTeams";
 import { useEffect } from "react";
 import useFilByTeam from "../../hooks/useFilByTeam";
 import { handle } from "../../hooks/handle";
 import useFil from "../../hooks/useFilter";
+import { useDispatch, useSelector } from "react-redux";
+import { getTeams } from "../../redux/actions/getTeams";
 
 
 const Home =  () => {
 
+    const dispatch = useDispatch()
+    const teams = useSelector(state=> state.teams)
     const {filByOr} = useFilByOrigin()
     const {filterTeam} = useFilByTeam()
     const {orderByAlpha} = useFil()
-    const {selectTeam,teams} = useTeams()
     
     useEffect(()=>{
-        selectTeam()
+        if(!teams.length) dispatch(getTeams())
     },[])
 
    

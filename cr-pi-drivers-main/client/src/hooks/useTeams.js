@@ -1,20 +1,22 @@
 import axios from "axios";
-import { useState } from "react";
 import { URL_BASE } from "../endpoints";
+import {useDispatch} from "react-redux"
+import { getTeams } from "../redux/actions/getTeams";
 
-const useTeams = () =>{
-    const [teams, setTeams] = useState([]);
-
-    const selectTeam = () =>{
+const getAllTeam = () =>{
+    
+    const getAllTeams = ()=>{
+    const dispatch = useDispatch();
     axios(`${URL_BASE}/teams`)
     .then(({data})=>{
-        setTeams([...data])
+        dispatch(getTeams(data))
     })
-    }
-    return{
-        selectTeam,
-        teams
-    }
+    .catch(error=>{
+        window.alert(`Algo salio mal: ${error.message}`)
+    })
 }
-
-export default useTeams
+return {
+    getAllTeams
+}
+}
+export default getAllTeam

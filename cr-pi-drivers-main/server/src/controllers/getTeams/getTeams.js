@@ -10,7 +10,7 @@ const getTeams = async () =>{
     })
     const reps = teamsdrivers.join().split(",");
     reps.forEach(team=>{
-        if(!teams.includes(team.trim())) teams.push(team.trim())
+        if(team !== "" && !teams.includes(team.trim())) teams.push(team.trim())
     });
 
     const teamsPromises = teams.map(async(driver)=>{

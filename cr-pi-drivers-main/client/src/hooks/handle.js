@@ -10,7 +10,7 @@ export const handleSubmit = (event,form) => {
     event.preventDefault();
     axios.post(URL_BASE,form)
     .then(response=>{
-        window.alert(response.request.statusText)
+        window.alert(response.data)
     })
     .catch(error=>{
         window.alert(error.message)

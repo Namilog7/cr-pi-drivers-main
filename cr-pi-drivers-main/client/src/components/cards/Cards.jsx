@@ -9,10 +9,11 @@ import {handle} from "../../hooks/handle"
 const Cards = () => {
     const {driversHome,pages,paginate,setPaginate,visual} = usePaginated()
     const dispatch = useDispatch();
+    
 
     useEffect(()=>{
         if(!driversHome[0]) dispatch(getDrivers())
-        pages()
+        pages();
     },[driversHome,paginate])
 
     
@@ -23,11 +24,11 @@ const Cards = () => {
            return <Card 
             name= {name}
             image= {image}
-            teams={teams} 
             key={id}
             nationality={nationality}
             dob={dob}
             description={description}
+        
             />
         })}
         <div className={style.buttons} >

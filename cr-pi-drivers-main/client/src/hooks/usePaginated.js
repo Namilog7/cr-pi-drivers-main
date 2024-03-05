@@ -14,6 +14,7 @@ const usePaginated = () => {
         const driversvisual = driversHome.slice(startIndex,endIndex)
         setvisual(driversvisual)
     }
+    
     return{
         pages,
         paginate,

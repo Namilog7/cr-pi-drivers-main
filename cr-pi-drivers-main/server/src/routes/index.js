@@ -12,7 +12,6 @@ router.get("/", async (req,res)=>{
     const {name} = req.query;
     try {
         const driver = name ? await getDriverQuery(name) : await getAllDrivers();
-        console.log("peticion")
         res.status(200).json(driver)
     } catch (error) {
         res.status(400).json({error:error.message})
@@ -42,8 +41,8 @@ router.get("/:idDriver", async(req,res)=>{
 // Al ser pocas rutas voy a ponerlas todas en este archivo, prometo que en el PF las separo (?.
 
 router.post("/", async (req,res)=>{
-    const {name,lastName,description,dob,nationality,image,teams} = req.body
     try {
+        const {name,lastName,description,dob,nationality,image,teams} = req.body
         const driver = await postDriver({ name, lastName, description, dob, nationality, image, teams });
         res.status(201).json(driver)
     } catch (error) {
