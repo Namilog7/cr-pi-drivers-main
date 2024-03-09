@@ -42,7 +42,8 @@ const getAllDrivers = async () => {
     const jsonDrivers = dbdrivers.map(driver=>{
         return {
             ...driver.toJSON(),
-            teams : driver.teams.map(t=>t.name)
+            teams : driver.teams.map(t=>t.name),
+            byfilterdob : new Date(driver.dob).getTime()
         }
     })
 

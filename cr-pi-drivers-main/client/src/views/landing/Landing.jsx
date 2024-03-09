@@ -7,7 +7,7 @@ const Landing = () => {
     return(
         <div className={style.contenedorbase}>
             <div className={style.contenedorimg}>
-            <img src={formula1} alt={formula1} className={style.image} />
+            <img src="https://i.ebayimg.com/images/g/IIMAAOSwG3tevXF3/s-l1200.webp" alt="" />
             </div>
             <div className={style.divbutton}>
             <Link to="/home">

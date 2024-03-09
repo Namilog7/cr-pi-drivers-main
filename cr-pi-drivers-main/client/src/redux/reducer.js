@@ -8,7 +8,9 @@ const initialState = {
     driversHome : [],
     driverDetail : {},
     aux: [],
-    teams: []
+    teams: [],
+    dbdrivers:[],
+    apidrivers:[],
 };
 
 const reducer = (state=initialState, {type,payload}) => {

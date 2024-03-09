@@ -5,7 +5,7 @@ import {getDetail} from "../../redux/actions/getDetail"
 
 const Card = (driver) => {
     const dispatch = useDispatch()
-    const {name,teams,image,} = driver
+    const {name,image} = driver
     return(
         <>
         <div className={style.card}>
@@ -14,9 +14,11 @@ const Card = (driver) => {
             <img src={image} alt={name} className={style.img}  onClick={()=>dispatch(getDetail(driver))} />
             </div>
             </Link>
-            <div className={style.divcontent}>
+            <Link to="/detailPage">
+            <div className={style.divcontent} onClick={()=>dispatch(getDetail(driver))}>
             <p className={style.name}>{name} </p>
             </div>
+            </Link>
         </div>
         </>
     )

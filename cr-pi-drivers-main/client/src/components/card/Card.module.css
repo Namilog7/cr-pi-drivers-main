@@ -1,27 +1,41 @@
 .card{
     width: 10%;
-    height: 15%;
-    background-color: red;
-    margin: 1.8%;
+    border-radius: 10px 10px 10px 10px;
+    margin-right: 4%;
+    margin-left: 3.5%;
+    margin-bottom: 1%;
+    margin-top: 1%;
 }
 .divimage{
     width: 100%;
     height: 70%;
     display: flex;
     justify-content: center;
-    padding-top: 3%;
+    border-radius: 10px;
+    margin-bottom: 8%;
+    
 }
 .divcontent{
     width: 100%;
     height: 30%;
     display: flex;
     justify-content: center;
+    background-color: rgba(255, 215, 0,0.9);
+    border-radius: 10px 10px 10px 10px;
 }
 .img{
-    width: 90%;
+    width: 100%;
     height: 100%;
-
+    min-width: 100%;
+    max-height: 180px;
+    min-height: 180px;
+    border-radius: 10px;
 }
 .name{
     font-weight: bold;
+    color: black;
+}
+.divcontent:hover{
+    scale: 1.2;
+    cursor: pointer;
 }

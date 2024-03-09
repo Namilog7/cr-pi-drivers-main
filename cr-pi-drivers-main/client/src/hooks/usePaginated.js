@@ -20,7 +20,8 @@ const usePaginated = () => {
         paginate,
         setPaginate,
         driversHome,
-        visual
+        visual,
+        setvisual
     }
 }
 

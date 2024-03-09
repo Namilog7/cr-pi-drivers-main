@@ -35,8 +35,12 @@ const validates = (form,errors,setErrors,property) => {
         break;
         case "nationality" :{
             if(!form.nationality) setErrors({...errors, nationality:"Enter nationality!"})
-            else setErrors({...errors,nationality:""})
+            else{
+                if(/^[a-zA-Z\s]{2,15}$/.test(form.nationality)) setErrors({...errors,nationality:""})
+                else setErrors({...errors,nationality:"Check size and only letters!"})
         }
+        }
+        break;
         case "image" :{
             if(!form.image) setErrors({...errors,image:"Enter URL!"})
             else{
@@ -44,8 +48,9 @@ const validates = (form,errors,setErrors,property) => {
             else setErrors({...errors,image:"Enter valid URL!"})
         }
         }
-
-
+        default:{
+            return errors
+        }
     }
 };
 

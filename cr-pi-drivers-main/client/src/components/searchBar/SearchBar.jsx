@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import useSearch from "../../hooks/useSearch"
 import style from "./SearchBar.module.css"
 const SearchBar = () => {
+    
     const {input,setInput,handleSearch} = useSearch()
     const handleChange = (event) => {
         setInput(event.target.value)
