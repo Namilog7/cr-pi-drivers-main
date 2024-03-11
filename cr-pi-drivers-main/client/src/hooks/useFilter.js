@@ -3,9 +3,9 @@ import { filByOrigin } from "../redux/actions/filByOrigin";
 
 
 const useFil = () => {
-    const aux = useSelector(state =>state.aux);
+    const driversHome = useSelector(state =>state.driversHome);
     const dispatch = useDispatch();
-    let arr = [...aux]
+    let arr = [...driversHome]
     
     const orderByAlpha = (value) =>{
         switch(value){

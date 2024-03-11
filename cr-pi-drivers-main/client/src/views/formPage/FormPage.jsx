@@ -8,15 +8,22 @@ import { handleSubmit } from "../../hooks/handle";
 
 
 
+
 const FormPage = () => {
     const teams = useSelector(state => state.teams) 
-    const {teamsSelecteds,arrTeams,searchIdTeam,find} = useAuxValidates()
+    const {teamsSelecteds,arrTeams,find,setArrTeams,setFind} = useAuxValidates()
     const {form,handleForm,setForm,errors} = useForm()
     const {name,lastName,nationality,description,image,dob} = form;
  
+    const closeButton = (value) =>{
+        const arrFil = arrTeams.filter(team=> team!==value)
+        const match = teams.find(team=> team.name==value)
+        const idTeamFilt = find.filter(id=> id !== match.id)
+        setArrTeams([...arrFil])
+        setFind([...idTeamFilt])
+    }
     
     useEffect(()=>{
-        searchIdTeam(arrTeams,teams)
         setForm({
             ...form,
             teams:[...find]
@@ -40,7 +47,7 @@ const FormPage = () => {
                     <input type="text" name="dob" id="dob" className={style.info} value={dob} onChange={handleForm} />
                     <span className={style.span}>{errors.dob} </span>
                     <label htmlFor="teams" className={style.label}>Teams:</label>
-                    <select name="teams" id=""  onChange={()=>handle(event,teamsSelecteds)} >
+                    <select name="teams"  onChange={()=>handle(event,teamsSelecteds)} >
                         <option value="" disabled selected>Teams</option>
                         {teams.map(team=>{
                             const {name} = team
@@ -58,9 +65,9 @@ const FormPage = () => {
                 <button type="submit">Submit</button>
                 </div>
             </form>
-            <div>
+            <div className={style.divTeams}>
                 {arrTeams.map(arrteam=>{
-                    return <h2 value={arrteam} key={arrteam}>{arrteam} </h2>
+                    return <div className={style.team}><h2 value={arrteam} key={arrteam}>{arrteam} </h2><button value={arrteam} onClick={()=>handle(event,closeButton)}>x</button></div>
                 })}
             </div>
         </div>

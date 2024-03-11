@@ -45,3 +45,36 @@
 .span{
     color: rgb(49, 21, 21);
 }
+
+.divTeams{
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.9) 35%, rgba(255, 255, 0, 0.9));
+    padding: 1%;
+    border-radius: 10px;
+    box-shadow: 8px 5px 10px rgb(0, 0, 0,0.9);
+    border: 1.5px solid black;
+}
+
+.divTeams h2{
+    color: black;
+}
+
+.team{
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: end;
+}
+
+.divTeams button{
+    width: 1%;
+    height: 1%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+
+}

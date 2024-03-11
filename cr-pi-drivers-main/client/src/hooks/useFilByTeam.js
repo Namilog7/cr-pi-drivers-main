@@ -11,7 +11,6 @@ const useFilByTeam = () => {
         })
         dispatch(filByOrigin(filt))
     }
-    
     return{
         filterTeam
     }

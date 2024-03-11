@@ -1,33 +1,27 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const useAuxValidates = () => {
 
     const [arrTeams, setArrTeams] = useState([]);
     const [find, setFind] = useState([])
 
-
+    const teams = useSelector(state=>state.teams)
 
     const teamsSelecteds = (value) =>{
         if(!arrTeams.includes(value)){
-            setArrTeams([...arrTeams,value])
-        }
-    };
-
-    const searchIdTeam = (array,teamsIds) => {
-        while(array.length){
-            let id = array.shift();
-            const match = teamsIds.find(ti=> ti.name == id);
+            const match = teams.find(team=> team.name == value)
+            setArrTeams([...arrTeams,match.name])
             setFind([...find,match.id])
         }
-    }
-    
-
+    };    
 
     return{
         teamsSelecteds,
         arrTeams,
-        searchIdTeam,
-        find
+        find,
+        setArrTeams,
+        setFind
     }
 };
 
