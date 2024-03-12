@@ -29,10 +29,10 @@ const Home =  () => {
         <div className={style.home}>
         <div className={style.contSearch}>
             <div className={style.filters}>
-                <select name="filter" id="filter" onChange={()=>{
+                <select name="filter" id="filter" className={style.selects} onChange={()=>{
                     handle(event,filterTeam) 
                     dispatch(stateFiltered(1))
-                    dispatch(keepStatePyN(1))
+                    dispatch(keepStatePyN)
                     } }>
                     <option value="" disabled selected >Selected Team</option>
                     {teams.map(team=>{
@@ -40,13 +40,13 @@ const Home =  () => {
                         return <option key={name} value={name} id={name}>{name}</option>
                     })}
                 </select>
-                <select name="filter2" id="filter2" onChange={()=>handle(event,filByOr)}>
+                <select name="filter2" id="filter2" className={style.selects} onChange={()=>handle(event,filByOr)}>
                     <option value= "" disabled selected>Selected option</option>
                     <option value="all">All</option>
                     <option value="api" >Api</option>
                     <option value="db">DataBase</option>
                 </select>
-                <select name="filter3" id="filter3" onChange={()=>handle(event,orderByAlpha)}>
+                <select name="filter3" id="filter3" className={style.selects} onChange={()=>handle(event,orderByAlpha)}>
                     <option value="" disabled selected>Selected option</option>
                     <option value="desbyalfa">Descend Alphabetically</option>
                     <option value="asbyalfa">Ascend Alphabetically</option>

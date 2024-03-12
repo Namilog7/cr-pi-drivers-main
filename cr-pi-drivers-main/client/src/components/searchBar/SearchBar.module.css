@@ -9,10 +9,12 @@
     height: 25px;
     border-radius: 6px 6px 6px 6px;
     margin: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 .searchbutton{
     height: 80%;
     width: 35%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 .button{
@@ -20,4 +22,5 @@
     height: 45px;
     display: flex;
     align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }

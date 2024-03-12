@@ -26,3 +26,9 @@
     background-repeat: no-repeat;
     padding-bottom: 50px;
 }
+
+.selects{
+    min-width: 40%;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

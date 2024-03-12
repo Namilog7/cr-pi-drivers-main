@@ -1,11 +1,27 @@
+import { useEffect, useState } from "react";
 import style from "./Detail.module.css";
-import {useSelector} from "react-redux";
+import axios from "axios";
+import { URL_BASE } from "../../endpoints";
+import { useParams } from "react-router-dom";
 
 
 const detailPage = () => {
-    const driverDetail = useSelector(state=> state.driverDetail)
-    const {id,name,lastName,nationality,image,description,dob,teams} = driverDetail;
-    
+   // const {name,lastName,nationality,image,description,dob,teams} = driverDetail;
+    const [state,setState] = useState({})
+    const {name,lastName,nationality,image,description,dob,teams} =state
+    const {id} = useParams()
+
+    useEffect(()=>{
+        axios(`${URL_BASE}/${id}`)
+        .then(({data})=>{
+            setState(data)
+            return () => {
+                setState({})
+            }
+        })
+    },[])
+
+    if(state){
     return(
         <div className={style.contenedor} >
         <div className={style.detail}>
@@ -19,8 +35,8 @@ const detailPage = () => {
             <p className={style.pyh}>{id} </p>
             <h2 className={style.pyh}>{nationality} </h2>
             <p className={style.pyh}>{dob} </p>
-            {teams.map(team=>{
-                return <span style={{marginRight:"1%"}} className={style.pyh} >{team} </span>
+            {teams?.map(team=>{
+                return <span key={team} volue={team} className={style.pyh}>{team} </span>
             })}
             <div className={style.descrip}>
                 <h2 className={style.h2}>Description</h2>
@@ -29,7 +45,9 @@ const detailPage = () => {
             </div>
             </div>
         </div>
-    )
+    )}else{
+        <h1>Loading...</h1>
+    }
 }
 
 export default detailPage

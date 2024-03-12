@@ -1,21 +1,20 @@
 import style from "./Card.module.css"
 import {Link} from "react-router-dom"
 import {useDispatch} from "react-redux";
-import {getDetail} from "../../redux/actions/getDetail"
 
 const Card = (driver) => {
     const dispatch = useDispatch()
-    const {name,image} = driver
+    const {name,image,id} = driver
     return(
         <>
         <div className={style.card}>
-            <Link to="/detailPage">
+            <Link to={`/detailPage/${id}`}>
             <div className={style.divimage}>
-            <img src={image} alt={name} className={style.img}  onClick={()=>dispatch(getDetail(driver))} />
+            <img src={image} alt={name} className={style.img} />
             </div>
             </Link>
-            <Link to="/detailPage">
-            <div className={style.divcontent} onClick={()=>dispatch(getDetail(driver))}>
+            <Link to={`/detailPage/${id}`}>
+            <div className={style.divcontent} >
             <p className={style.name}>{name} </p>
             </div>
             </Link>

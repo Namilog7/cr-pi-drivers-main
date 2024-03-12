@@ -9,7 +9,6 @@ import { KEEP_STATE } from "./actions/keepState";
 
 const initialState = {
     driversHome : [],
-    driverDetail : {},
     aux: [],
     teams: [],
     dbdrivers : [],
@@ -35,12 +34,6 @@ const reducer = (state=initialState, {type,payload}) => {
             return {
                 ...state,
                 driversHome:[...payload]
-            }
-        }
-        case GET_DETAIL :{
-            return{
-                ...state,
-                driverDetail: payload
             }
         }
         case GET_BY_FILTER:{
