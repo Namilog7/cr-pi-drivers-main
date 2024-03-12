@@ -3,21 +3,30 @@ import { SEARCH_DRIVER } from "./actions/searchDriver";
 import { GET_DETAIL } from "./actions/getDetail";
 import { GET_BY_FILTER } from "./actions/filByOrigin";
 import { GET_TEAMS } from "./actions/getTeams";
+import { FILTER_VALUE } from "./actions/filterValue";
+import { STATE_FILTER } from "./actions/stateFilters";
 
 const initialState = {
     driversHome : [],
     driverDetail : {},
     aux: [],
     teams: [],
+    dbdrivers : [],
+    apidrivers : [],
+    valueFil: "all",
+    stateFilter: 1
 };
 
 const reducer = (state=initialState, {type,payload}) => {
     switch(type){
         case GET_DRIVERS:{
+            const {apidrivers,dbdrivers} = payload
             return {
                 ...state,
-                driversHome:[...state.driversHome,...payload],
-                aux:[...state.driversHome, ...payload]
+                driversHome:[...state.driversHome, ...dbdrivers, ...apidrivers],
+                aux:[...state.driversHome, ...dbdrivers, ...apidrivers],
+                apidrivers:[...apidrivers],
+                dbdrivers: [...dbdrivers]
             } 
         }
         case SEARCH_DRIVER:{
@@ -42,6 +51,18 @@ const reducer = (state=initialState, {type,payload}) => {
             return{
                 ...state,
                 teams:[...payload]
+            }
+        }
+        case FILTER_VALUE:{
+            return{
+                ...state,
+                valueFil: payload
+            }
+        }
+        case STATE_FILTER:{
+            return{
+                ...state,
+                stateFilter:payload
             }
         }
         default:{

@@ -5,6 +5,7 @@ import { getDrivers } from "../../redux/actions/getDrivers";
 import style from "./Cards.module.css"
 import usePaginated from "../../hooks/usePaginated";
 import {handle} from "../../hooks/handle"
+import Paginate from "../paginate/Paginate";
 
 const Cards = () => {
     const {driversHome,pages,paginate,setPaginate,visual} = usePaginated()
@@ -23,6 +24,9 @@ const Cards = () => {
     
     return(
         <div className={style.contenedor}>
+            <div className={style.pagintate} >
+        <Paginate driversHome={driversHome} setPaginate={setPaginate} handle={handle} />
+        </div>
         <div className={style.cards}>
         {visual.map(driver=>{
             const {name,id,image,nationality,dob,description,teams,lastName} = driver
@@ -35,14 +39,10 @@ const Cards = () => {
             dob={dob}
             description={description}
             teams = {teams}
+            id={id}
         
             />
         })}
-        </div>
-        <div className={style.buttons} >
-            {Array.from({length:Math.ceil(driversHome.length/9)}, (_, index)=>{
-               return <button key={index+1} value={index +1} onClick={()=>handle(event,setPaginate)} className={style.button}>{index + 1} </button>
-            })}
         </div>
         </div>
     )

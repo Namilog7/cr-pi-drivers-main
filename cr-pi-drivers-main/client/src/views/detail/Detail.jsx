@@ -16,6 +16,7 @@ const detailPage = () => {
             </div>
             <div className={style.datos}>
             <h1 style={{borderBottom:"1px solid black"}}>{`${name} ${lastName}`} </h1>
+            <p className={style.pyh}>{id} </p>
             <h2 className={style.pyh}>{nationality} </h2>
             <p className={style.pyh}>{dob} </p>
             {teams.map(team=>{

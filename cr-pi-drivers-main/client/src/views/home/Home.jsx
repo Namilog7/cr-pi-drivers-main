@@ -36,6 +36,7 @@ const Home =  () => {
                 </select>
                 <select name="filter2" id="filter2" onChange={()=>handle(event,filByOr)}>
                     <option value= "" disabled selected>Selected option</option>
+                    <option value="all">All</option>
                     <option value="api" >Api</option>
                     <option value="db">DataBase</option>
                 </select>

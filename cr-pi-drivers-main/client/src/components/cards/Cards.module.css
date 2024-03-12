@@ -18,3 +18,8 @@
 .contenedor{
     display: block;
 }
+
+.paginate{
+    width: 100vw;
+    
+}

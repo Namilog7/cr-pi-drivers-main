@@ -18,13 +18,6 @@ const validates = (form,errors,setErrors,property) => {
            }
         };
         break;
-        case "teams" :{
-            if(!form.teams.length) setErrors({...errors, teams:"Enter Teams!"})
-            else{
-                setErrors({...errors,teams:""})
-           }
-        };
-        break;
         case "dob":{
             if(!form.dob) setErrors({...errors, dob: "Enter valid date!"})
             else {
