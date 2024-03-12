@@ -5,6 +5,7 @@ import { GET_BY_FILTER } from "./actions/filByOrigin";
 import { GET_TEAMS } from "./actions/getTeams";
 import { FILTER_VALUE } from "./actions/filterValue";
 import { STATE_FILTER } from "./actions/stateFilters";
+import { KEEP_STATE } from "./actions/keepState";
 
 const initialState = {
     driversHome : [],
@@ -14,7 +15,8 @@ const initialState = {
     dbdrivers : [],
     apidrivers : [],
     valueFil: "all",
-    stateFilter: 1
+    stateFilter: 1,
+    statePrevNext:1
 };
 
 const reducer = (state=initialState, {type,payload}) => {
@@ -63,6 +65,12 @@ const reducer = (state=initialState, {type,payload}) => {
             return{
                 ...state,
                 stateFilter:payload
+            }
+        }
+        case KEEP_STATE:{
+            return{
+                ...state,
+                statePrevNext:payload
             }
         }
         default:{

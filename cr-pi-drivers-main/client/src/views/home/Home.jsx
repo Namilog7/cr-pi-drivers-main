@@ -8,6 +8,8 @@ import { handle } from "../../hooks/handle";
 import useFil from "../../hooks/useFilter";
 import { useDispatch, useSelector } from "react-redux";
 import { getTeams } from "../../redux/actions/getTeams";
+import { stateFiltered } from "../../redux/actions/stateFilters";
+import { keepStatePyN } from "../../redux/actions/keepState";
 
 
 const Home =  () => {
@@ -27,7 +29,11 @@ const Home =  () => {
         <div className={style.home}>
         <div className={style.contSearch}>
             <div className={style.filters}>
-                <select name="filter" id="filter" onChange={()=>handle(event,filterTeam)}>
+                <select name="filter" id="filter" onChange={()=>{
+                    handle(event,filterTeam) 
+                    dispatch(stateFiltered(1))
+                    dispatch(keepStatePyN(1))
+                    } }>
                     <option value="" disabled selected >Selected Team</option>
                     {teams.map(team=>{
                         const {name} = team

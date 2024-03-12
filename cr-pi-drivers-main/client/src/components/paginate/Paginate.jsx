@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import style from "./Paginate.module.css"
 import { useSelector,useDispatch } from "react-redux";
 import { stateFiltered } from "../../redux/actions/stateFilters";
+import {keepStatePyN} from "../../redux/actions/keepState"
 
 
 const Paginate = ({driversHome,setPaginate,handle}) => {
 
-    const [buttonsPage, setButtonsPage] = useState(1);
-    const stateFilter = useSelector(state=>state.stateFilter)
-    const dispatch = useDispatch()
+    const statePrevNext = useSelector(state=>state.statePrevNext);
+    const stateFilter = useSelector(state=>state.stateFilter);
+    const dispatch = useDispatch();
 
     const pagesButtons = 10;  
 
@@ -29,14 +30,14 @@ const Paginate = ({driversHome,setPaginate,handle}) => {
     }
 
     const previus = () =>{
-        if(buttonsPage > 1){
-            setButtonsPage(buttonsPage-1)
+        if(statePrevNext > 1){
+            dispatch(keepStatePyN(statePrevNext-1))
         } 
     }
 
     const next = () => {
-        if(buttonsPage < Math.ceil(driversHome.length/9 /pagesButtons) ){
-            setButtonsPage(buttonsPage+1)
+        if(statePrevNext < Math.ceil(driversHome.length/9 /pagesButtons) ){
+            dispatch(keepStatePyN(statePrevNext+1))
         }
     }
 
@@ -44,7 +45,7 @@ const Paginate = ({driversHome,setPaginate,handle}) => {
     return(
         <div className={style.paginate}>
             <button onClick={previus} className={style.nextyprev}>Prev</button>
-            {renderButtons(buttonsPage)}
+            {renderButtons(statePrevNext)}
             {setPaginate(stateFilter)}
             <button onClick={next} className={style.nextyprev} >Next</button>
         </div>
