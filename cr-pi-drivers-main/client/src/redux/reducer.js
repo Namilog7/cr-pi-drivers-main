@@ -1,11 +1,11 @@
 import { GET_DRIVERS } from "./actions/getDrivers";
 import { SEARCH_DRIVER } from "./actions/searchDriver";
-import { GET_DETAIL } from "./actions/getDetail";
 import { GET_BY_FILTER } from "./actions/filByOrigin";
 import { GET_TEAMS } from "./actions/getTeams";
 import { FILTER_VALUE } from "./actions/filterValue";
 import { STATE_FILTER } from "./actions/stateFilters";
 import { KEEP_STATE } from "./actions/keepState";
+import { FILTERNAT } from "./actions/filterByNat";
 
 const initialState = {
     driversHome : [],
@@ -64,6 +64,12 @@ const reducer = (state=initialState, {type,payload}) => {
             return{
                 ...state,
                 statePrevNext:payload
+            }
+        }
+        case FILTERNAT:{
+            return{
+                ...state,
+                driversHome:payload
             }
         }
         default:{

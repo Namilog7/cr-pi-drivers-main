@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
 import useSearch from "../../hooks/useSearch"
 import style from "./SearchBar.module.css"
+import { useSelector } from "react-redux"
+import filter from "../../hooks/filter"
 const SearchBar = () => {
     
     const {input,setInput,handleSearch} = useSearch()
+    const aux = useSelector(state=> state.aux)
     const handleChange = (event) => {
         setInput(event.target.value)
     }
@@ -16,6 +19,7 @@ const SearchBar = () => {
         <>
         <div className={style.search}>
             <div>
+                <button onClick={()=>filter(aux)}>nationality</button>
                 <Link to="/formPage">
                 <button className={style.button}>Create new!</button>
                 </Link>
