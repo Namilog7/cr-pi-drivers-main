@@ -28,6 +28,7 @@ const Cards = () => {
         <Paginate driversHome={driversHome} setPaginate={setPaginate} handle={handle} />
         </div>
         <div className={style.cards}>
+        
         {visual.map(driver=>{
             const {name,id,image,nationality,dob,description,teams,lastName} = driver
            return <Card 
